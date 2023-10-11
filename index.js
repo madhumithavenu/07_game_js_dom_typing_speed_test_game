@@ -85,5 +85,21 @@ function initTyping() {
         inpField.value = "";
     }
 }
+function initTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        timeTag.innerText = timeLeft;
+        let wpm = Math.round(((charIndex - mistakes) / 5) / (maxTime - timeLeft) * 60);
+        wpmTag.innerText = wpm;
+    } else {
+        clearInterval(timer);
+    }
+}
+
+
+
+loadParagraph();
+inpField.addEventListener("input", initTyping);
+tryAgainBtn.addEventListener("click", resetGame);
 
 
